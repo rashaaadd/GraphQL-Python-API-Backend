@@ -1,0 +1,69 @@
+scalar JSON
+
+type DataResult {
+  success: Boolean!
+  errors: [String]
+  data: JSON
+}
+
+#Args
+input CreateProjectArgs {
+  project_name:String!,                  
+  project_type_id:Int!,
+  avatar_url:String,             
+  owner_user_id:Int!,
+  admin_user_id:Int!,
+  created_by_user_id:Int!,
+  default_view_id:Int!,                 
+  workspace_id:Int,
+  is_template:Boolean,
+  is_private:Boolean,
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  getAllActivities: DataResult!
+  getActivity(id: Int!): DataResult!
+
+  getAllProjects: DataResult!
+  getProject(id: Int!): DataResult!
+
+  getAllProjectTypes: DataResult!
+  getProjectType(id: Int!): DataResult!
+
+  getAllCustomFields: DataResult!
+  getCustomField(id: Int!): DataResult!
+
+  getAllDefaultViews: DataResult!
+  getDefaultView(id: Int!): DataResult!
+}
+
+
+type Mutation{
+  createActivity(action_name: String!): DataResult!
+  updateActivity(id: Int!,action_name: String!): DataResult!
+  deleteActivity(id: Int!): DataResult!
+
+  createProject(input:CreateProjectArgs): DataResult!
+  updateProject(id: Int!, project_name: String!): DataResult!
+  deleteProject(id: Int!): DataResult!
+
+  createProjectType(title: String!): DataResult!
+  updateProjectType(id: Int!, title: String!): DataResult!
+  deleteProjectType(id: Int!): DataResult!
+
+  createCustomField(title: String!): DataResult!
+  updateCustomField(id: Int!, title: String!): DataResult!
+  deleteCustomField(id: Int!): DataResult!
+
+  createDefaultView(title: String!): DataResult!
+  updateDefaultView(id: Int!, title: String!): DataResult!
+  deleteDefaultView(id: Int!): DataResult!
+
+}
+
+
