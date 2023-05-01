@@ -171,8 +171,11 @@ class Tags(db.Model):
     project_tags = relationship("ProjectTags", back_populates="tags")
     task_tags = relationship("TaskTags", back_populates="tags")
 
-    def __repr__(self):
-        return f"<Tags {self.title}>"
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title
+        }
 
 
 class ProjectDefaultCustomFields(db.Model):

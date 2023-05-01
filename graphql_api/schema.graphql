@@ -20,6 +20,22 @@ input CreateProjectArgs {
   is_private:Boolean,
 }
 
+input UserArgs {
+  first_name: String,
+  last_name: String,
+  year_of_birth: String,
+  profile_pic_url: String,
+  gender_id: Int,
+  languages: String,
+  bio: String
+}
+
+input ProjectCustomFieldsArgs {
+  project_id: Int
+  custom_field_id: Int,
+  custom_field_value: JSON,
+}
+
 schema {
   query: Query
   mutation: Mutation
@@ -40,6 +56,18 @@ type Query {
 
   getAllDefaultViews: DataResult!
   getDefaultView(id: Int!): DataResult!
+
+  getAllUsers: DataResult!
+  getUser(id: Int!): DataResult!
+
+  getAllPriorities: DataResult!
+  getPriority(id: Int!): DataResult!
+
+  getAllTags: DataResult!
+  getTag(id: Int!): DataResult!
+
+  getAllProjectCustomFields: DataResult!
+  getProjectCustomField(id: Int!) : DataResult!
 }
 
 
@@ -63,6 +91,24 @@ type Mutation{
   createDefaultView(title: String!): DataResult!
   updateDefaultView(id: Int!, title: String!): DataResult!
   deleteDefaultView(id: Int!): DataResult!
+
+  createUser(input: UserArgs!): DataResult!
+  updateUser(id: Int!, input: UserArgs!): DataResult!
+  deleteUser(id: Int!): DataResult!
+
+  createPriority(priority_name: String!): DataResult!
+  updatePriority(id: Int!, priority_name: String!): DataResult!
+  deletePriority(id: Int!): DataResult!
+
+  createTag(title: String!): DataResult!
+  updateTag(id: Int!, title: String!): DataResult!
+  deleteTag(id: Int!): DataResult!
+
+  createProjectCustomField(input: ProjectCustomFieldsArgs!): DataResult!
+  updateProjectCustomField(id: Int!, input: ProjectCustomFieldsArgs!): DataResult!
+  deleteProjectCustomField(id: Int!): DataResult!
+
+
 
 }
 

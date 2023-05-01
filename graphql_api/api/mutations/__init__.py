@@ -27,3 +27,27 @@ from .default_views import (
     update_default_view_resolver,
     delete_default_view_resolver
 )
+
+from .users import (
+    create_user_resolver,
+    update_user_resolver,
+    delete_user_resolver
+)
+
+from .priorities import (
+    create_priority_resolver,
+    update_priority_resolver,
+    delete_priority_resolver
+)
+
+from .tags import (
+    create_tag_resolver,
+    update_tag_resolver,
+    delete_tag_resolver
+)
+
+from .project_default_custom_fields import (
+    create_project_custom_field_resolver,
+    update_project_custom_field_resolver,
+    delete_project_custom_field_resolver
+)
